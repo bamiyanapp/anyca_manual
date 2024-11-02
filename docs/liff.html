@@ -1,39 +1,58 @@
 <!DOCTYPE html>
 <html lang="ja">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>LIFFサンプル</title>
-    <link rel="stylesheet" href="https://fonts.xz.style/serve/inter.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css"
-    />
-    <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
-  </head>
-  <body>
-    <h2>ハンズオン資料</h2>
-    <ul>
-      <li>
-        <a href="https://firebase-handson.ozaki25.now.sh/" target="_blank">
-          Firebase Authenticationハンズオン
-        </a>
-      </li>
-      <li>
-        <a href="https://graphql-handson.ozaki25.now.sh/" target="_blank">
-          GraphQLハンズオン
-        </a>
-      </li>
-      <li>
-        <a href="https://jamstack-handson.ozaki25.now.sh/" target="_blank">
-          Jamstackハンズオン
-        </a>
-      </li>
-      <li>
-        <a href="https://line-bot-handson.ozaki25.now.sh/" target="_blank">
-          LINE Botハンズオン
-        </a>
-      </li>
-    </ul>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>車のレンタルリクエスト</title>
+    <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+</head>
+<body>
+    <h1>車のレンタルリクエスト</h1>
+    <form id="rentalForm">
+        <label for="request">リクエスト内容:</label><br>
+        <textarea id="request" rows="4" cols="50" placeholder="レンタルしたい車の種類、日付、場所などを入力してください"></textarea><br><br>
+        <button type="button" onclick="sendMessage()">送信</button>
+    </form>
+
+    <script>
+        // LIFF初期化
+        async function initializeLiff() {
+            try {
+                await liff.init({ liffId: "YOUR_LIFF_ID" });
+                if (!liff.isInClient()) {
+                    alert("このアプリはLINE内で動作する必要があります。");
+                }
+            } catch (error) {
+                console.error("LIFFの初期化に失敗しました:", error);
+            }
+        }
+
+        // メッセージ送信
+        async function sendMessage() {
+            const requestContent = document.getElementById("request").value;
+
+            if (requestContent.trim() === "") {
+                alert("リクエスト内容を入力してください。");
+                return;
+            }
+
+            try {
+                await liff.sendMessages([
+                    {
+                        type: "text",
+                        text: `車のレンタルリクエスト:\n「${requestContent}」`
+                    }
+                ]);
+                alert("リクエストが送信されました！");
+                liff.closeWindow();  // アプリを閉じる
+            } catch (error) {
+                console.error("メッセージの送信に失敗しました:", error);
+                alert("メッセージの送信に失敗しました。");
+            }
+        }
+
+        // LIFFアプリの初期化を呼び出し
+        initializeLiff();
+    </script>
+</body>
 </html>
