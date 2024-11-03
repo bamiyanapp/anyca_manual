@@ -1,7 +1,8 @@
 const dayjs = require('dayjs');
 
 module.exports = {
-  title: 'LINE Bot Handson',
+  title: 'Anyca代替サービスのご案内',
+  description: 'Anycaサービス終了に伴う貸出情報まとめ',
   base: '/anyca_manual/',
   themeConfig: {
     domain: 'https://line-bot-handson.ozaki25.now.sh',
