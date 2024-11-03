@@ -6,7 +6,7 @@ on:
 
 jobs:
  deploy:
-   name: Deploy
+   name: Deploy_temp
    runs-on: ubuntu-latest
    permissions:
      contents: read
