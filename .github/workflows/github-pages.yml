@@ -29,5 +29,6 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public  # ビルド後の出力先
+          publish_branch: gh-pages  # 公開ブランチを指定
+          publish_dir: docs/.vuepress/dist  # ビルド後の出力先
           clean: true
