@@ -17,6 +17,8 @@ jobs:
       - name: install
         run: |
           yarn install
+      - name: Install Vercel CLI
+        run: npm install -g vercel
       - name: Update browserslist database
         run: npx browserslist@latest --update-db
       - name: build
