@@ -25,3 +25,8 @@ jobs:
         run: |
           export NODE_OPTIONS=--openssl-legacy-provider
           yarn build
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public  # ビルド後の出力先
