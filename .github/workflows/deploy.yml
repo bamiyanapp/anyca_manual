@@ -22,6 +22,7 @@ jobs:
           yarn build
       - name: deploy
         run: |
+          echo $VERCEL_TOKEN
           npx vc ./public --confirm --prod -t $VERCEL_TOKEN
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
