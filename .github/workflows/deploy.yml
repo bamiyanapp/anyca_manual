@@ -25,9 +25,10 @@ jobs:
         run: |
           export NODE_OPTIONS=--openssl-legacy-provider
           yarn build
-      - name: deploy
-        run: |
-          echo $VERCEL_TOKEN
-          npx vc ./public --confirm --prod -t $VERCEL_TOKEN
+      - name: Deploy to Vercel
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+        run: |
+          echo $VERCEL_TOKEN
+          npx vc ./public --confirm --prod -t $VERCEL_TOKEN -p $VERCEL_PROJECT_ID
