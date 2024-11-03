@@ -17,8 +17,11 @@ jobs:
       - name: install
         run: |
           yarn install
+      - name: Update browserslist database
+        run: npx browserslist@latest --update-db
       - name: build
         run: |
+          export NODE_OPTIONS=--openssl-legacy-provider
           yarn build
       - name: deploy
         run: |
