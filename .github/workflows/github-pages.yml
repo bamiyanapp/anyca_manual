@@ -1,0 +1,27 @@
+name: deploy website
+on:
+  push:
+    branches:
+      - master
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Use Node.js 18
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: install
+        run: |
+          yarn install
+      - name: Install Vercel CLI
+        run: npm install -g vercel
+      - name: Update browserslist database
+        run: npx browserslist@latest --update-db
+      - name: build
+        run: |
+          export NODE_OPTIONS=--openssl-legacy-provider
+          yarn build
