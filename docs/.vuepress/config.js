@@ -2,7 +2,7 @@ const dayjs = require('dayjs');
 
 module.exports = {
   title: 'LINE Bot Handson',
-  base: '/',
+  base: '/anyca_manual/',
   themeConfig: {
     domain: 'https://line-bot-handson.ozaki25.now.sh',
     repo: 'ozaki25/line-bot-handson',
