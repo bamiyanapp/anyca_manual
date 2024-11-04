@@ -74,7 +74,7 @@ export default {
         dayCount++;
       }
 
-      // 超過距離分の追加料金を計算
+      // 距離超過分の計算
       const totalAllowedDistance = maxDailyDistance * dayCount;
       const excessDistance = Math.max(0, this.distance - totalAllowedDistance);
       const excessCost = Math.ceil(excessDistance / 100) * excessDistanceCostPer100km;
