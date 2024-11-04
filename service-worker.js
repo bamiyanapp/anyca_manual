@@ -27,7 +27,7 @@ self.addEventListener('message', (event) => {
 self.__precacheManifest = [
   {
     "url": "404.html",
-    "revision": "49099ee27fc428ac3bb8ba2dbb0e13ff"
+    "revision": "b921d39f40c1ffe7502a9ace40b9f75d"
   },
   {
     "url": "assets/css/0.styles.9ee70a5d.css",
@@ -66,28 +66,28 @@ self.__precacheManifest = [
     "revision": "c37e8f284102f3c4fab1ec1da90d334e"
   },
   {
-    "url": "assets/js/7.6e472555.js",
-    "revision": "0bd44e684657317ad2efae64899190d1"
+    "url": "assets/js/7.d5b78bdc.js",
+    "revision": "643adc7935c7ba36438720dd900afb56"
   },
   {
-    "url": "assets/js/8.1ad931f8.js",
-    "revision": "65029630ddd145e0f86708f8cb241453"
+    "url": "assets/js/8.335bbc8d.js",
+    "revision": "6f77d65ae1c359036d2428c34b99cc44"
   },
   {
-    "url": "assets/js/9.9de00e46.js",
-    "revision": "c5025a9758489e585141738eede4392e"
+    "url": "assets/js/9.6e638310.js",
+    "revision": "5e4a449b1eaa1d1a501f8644dd4d828d"
   },
   {
-    "url": "assets/js/app.5d32a676.js",
-    "revision": "b599686c1517cc87fcb93ee55c439f4d"
+    "url": "assets/js/app.61ae7732.js",
+    "revision": "316e9270427031d934aac4eca0c72708"
   },
   {
     "url": "guideline.html",
-    "revision": "9d503c3332f56537a1373f242a100a8f"
+    "revision": "3c066f263bdc6ecea8616f09cf2c3569"
   },
   {
     "url": "i3.html",
-    "revision": "8fe1dfcbcb66d02cced38fee11736a97"
+    "revision": "f7d932bcb8c844dcff9734a31b784dd1"
   },
   {
     "url": "icon.png",
@@ -403,15 +403,15 @@ self.__precacheManifest = [
   },
   {
     "url": "index.html",
-    "revision": "3b8035e7fd89971bfcd52083e3395ae2"
+    "revision": "80074cd33c80e28ba8189996d1d57237"
   },
   {
     "url": "outlander.html",
-    "revision": "91d8798097e4e1dcb02ad90982ee5542"
+    "revision": "aa474d692fa1285555ed3c533cddbc37"
   },
   {
     "url": "process.html",
-    "revision": "6fba31d4c6954afb31de942a9fd6be42"
+    "revision": "0bfbcb6624e4969e18193e2a043af0c3"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
