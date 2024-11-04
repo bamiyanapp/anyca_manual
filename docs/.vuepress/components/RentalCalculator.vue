@@ -24,6 +24,12 @@
 
 <script>
 export default {
+  props: {
+    baseCost: {
+      type: Number,
+      default: 1000 // デフォルト値を設定
+    }
+  },
   data() {
     return {
       startDate: '',
@@ -44,7 +50,6 @@ export default {
 
       let totalCost = 0;
       let dayCount = 0;
-      const baseCost = 6980;
       const weekdayDiscount = 500; // 平日割引
       const consecutiveDiscount = 500; // 連続割引（2日目以降）
       const maxDailyDistance = 300; // 1日あたりの上限距離
@@ -52,7 +57,7 @@ export default {
 
       // 日ごとに料金を計算
       for (let date = new Date(start); date < end; date.setDate(date.getDate() + 1)) {
-        let dailyCost = baseCost;
+        let dailyCost = this.baseCost; // 引数から受け取った baseCost を使用
 
         // 平日割引の適用（月曜日から金曜日）
         const isWeekday = date.getDay() >= 1 && date.getDay() <= 5;
