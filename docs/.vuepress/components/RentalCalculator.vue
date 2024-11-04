@@ -18,6 +18,7 @@
     </form>
     <div v-if="rentalCost !== null">
       <p>レンタル料金: {{ rentalCost }} 円</p>
+      <a :href="lineMessageUrl" target="_blank">LINEで問い合わせする</a>
     </div>
   </div>
 </template>
@@ -90,6 +91,11 @@ export default {
 
       // 最終レンタル料金を計算
       this.rentalCost = totalCost + excessCost;
+
+      // LINEメッセージ用の情報生成
+      const message = `レンタル料金試算結果:\n開始日時: ${this.startDate}\n終了日時: ${this.endDate}\n走行距離: ${this.mileage} km\n合計料金: ${this.rentalCost} 円`;
+      const encodedMessage = encodeURIComponent(message);
+      this.lineMessageUrl = `line://msg/text/${encodedMessage}`;      
     },
   },
 };
