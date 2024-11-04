@@ -5,10 +5,10 @@ module.exports = {
   description: 'Anycaサービス終了に伴う貸出情報まとめ',
   base: '/anyca_manual/',
   themeConfig: {
-    domain: 'https://line-bot-handson.ozaki25.now.sh',
-    repo: 'ozaki25/line-bot-handson',
+    domain: 'https://bamiyanapp.github.io/anyca_manual',
+    repo: 'bamiyanapp/anyca_manual',
     repoLabel: 'GitHub',
-    sidebar: ['/page1', 'page2', 'page3', 'page4', 'page5', 'page6'],
+    sidebar: ['/guideline', 'outlander', 'i3', 'process'],
   },
   markdown: {
     lineNumbers: true,
@@ -26,7 +26,7 @@ module.exports = {
       updatePopup: true,
     },
     seo: {
-      description: () => 'ハンズオン資料',
+      description: () => 'Anycaサービス終了に伴う貸出情報',
     },
   },
   head: [['link', { rel: 'manifest', href: '/manifest.json' }]],
