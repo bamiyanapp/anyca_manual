@@ -26,7 +26,7 @@
   - 1日あたり300kmを上限に、超過する場合、超過分100kmにつき1000円
 
 <ClientOnly>
-  <RentalCalculator :base-cost="6980" />
+  <RentalCalculator :base-cost="6980" :car="アウトランダー" />
 </ClientOnly>
 
 ## 操作方法、注意事項
