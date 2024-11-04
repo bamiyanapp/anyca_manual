@@ -24,8 +24,7 @@
 ### リクエスト時に必要な情報
 - [リンク](./process.html)
 
-## 貸出条件
-### 受け渡し
-- [リンク](./process.html)
+## 受け渡し場所
+- [リンク](./transaction-location.html)
 
 ![神奈川県](/images/0-1.png)![クロネコヤマト](/images/0-2.png)

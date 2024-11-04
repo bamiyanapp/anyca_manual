@@ -8,7 +8,7 @@ module.exports = {
     domain: 'https://bamiyanapp.github.io/anyca_manual',
     repo: 'bamiyanapp/anyca_manual',
     repoLabel: 'GitHub',
-    sidebar: ['/guideline', 'outlander', 'i3', 'process'],
+    sidebar: ['/guideline', 'outlander', 'i3', 'process','transaction-location'],
   },
   markdown: {
     lineNumbers: true,
