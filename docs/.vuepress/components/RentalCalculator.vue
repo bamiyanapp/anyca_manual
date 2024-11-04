@@ -29,6 +29,10 @@ export default {
     baseCost: {
       type: Number,
       default: 1000 // デフォルト値を設定
+    },
+    car: {
+      type: String,
+      required: true // 車両名称は必須の引数
     }
   },
   data() {
@@ -93,7 +97,7 @@ export default {
       this.rentalCost = totalCost + excessCost;
 
       // LINEメッセージ用の情報生成
-      const message = `レンタル料金試算結果:\n開始日時: ${this.startDate}\n終了日時: ${this.endDate}\n走行距離: ${this.mileage} km\n合計料金: ${this.rentalCost} 円`;
+      const message = `レンタル料金試算結果:\n車両名称: ${this.car}\n開始日時: ${this.startDateTime}\n終了日時: ${this.endDateTime}\n走行距離: ${this.distance} km\n合計料金: ${this.rentalCost} 円`;
       const encodedMessage = encodeURIComponent(message);
       this.lineMessageUrl = `line://msg/text/${encodedMessage}`;      
     },
