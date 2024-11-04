@@ -19,8 +19,15 @@
   - [カーナビ取り扱い説明書](https://www.alpine.co.jp/files/cdb/ZZ/dealer-option/mitsubishi/pdf/zz_dealer-option_mitsubishi_pdf_man-MZ609745-609748-609712-609746-609747.pdf)
 
 ## 料金
-- 条件入力して試算する機能
-- 以下のコンポーネントを使って、開始日と終了日を指定し、割引を考慮したレンタル料金を計算します。
+- 基本料金
+  - 6980円
+- 平日割引
+  - 500円
+- 連続割引
+  - 2日目以降に適用されます
+  - 500円
+- 走行距離加算
+  - 1日あたり300kmを上限に、超過する場合、超過分100kmにつき1000円
 
 <ClientOnly>
   <RentalCalculator />
