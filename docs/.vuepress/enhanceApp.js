@@ -1,5 +1,5 @@
 // docs/.vuepress/enhanceApp.js
-import RentalCalculator from './path/to/RentalCalculator.vue';
+import RentalCalculator from './components/RentalCalculator.vue';
 
 export default ({ Vue }) => {
   Vue.component('RentalCalculator', RentalCalculator);
