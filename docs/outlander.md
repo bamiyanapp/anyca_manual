@@ -30,7 +30,7 @@
   - 1日あたり300kmを上限に、超過する場合、超過分100kmにつき1000円
 
 <ClientOnly>
-  <RentalCalculator />
+  <RentalCalculator :base-cost="1500" />
 </ClientOnly>
 
 ## 操作方法、注意事項
