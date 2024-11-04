@@ -1,5 +1,7 @@
 # 三菱アウトランダー
 - 公式ページはこちらからご覧いただけます：[三菱アウトランダー公式ページ](https://www.mitsubishi-motors.co.jp/lineup/outlander/)
+- [スペック・諸元](https://www.goo-net.com/catalog/MITSUBISHI/OUTLANDER_PHEV/10117380/)
+
 ## 特徴や魅力の詳細
 
 - 三菱アウトランダーのPHEVです。
