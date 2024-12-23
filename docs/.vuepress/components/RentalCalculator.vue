@@ -63,8 +63,8 @@ export default {
       }
 
       let totalCost = 0;
-      const weekdayDiscount = 500; // 平日割引
-      const consecutiveDiscount = 500; // 連続割引（2日目以降）
+      const weekdayDiscount = 0; // 平日割引
+      const consecutiveDiscount = 0; // 連続割引（2日目以降）
       const maxDailyDistance = 300; // 1日あたりの上限距離
       const excessDistanceCostPer100km = 1000; // 超過100kmごとの追加料金
 
