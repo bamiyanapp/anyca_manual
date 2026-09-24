@@ -6,7 +6,8 @@
 
 本リポジトリは、カーシェア（Anyca代替サービス）の利用者向け案内をまとめたVuePress製の静的サイトである。ソースは`docs/`配下のMarkdownと、`docs/.vuepress/`配下の設定・コンポーネント（Vue）のみで構成される、テストやAPIを持たない小規模なコンテンツサイトである。
 
-- CI（`.github/workflows/github-pages.yml`）は`master`へのpushをトリガーに、dev-standards共通の`deploy-github-pages`複合action（`npm run build`→GitHub Pagesデプロイ）を呼び出すのみで、lintやテストによる品質ゲートは存在しない
+- デプロイ用CI（`.github/workflows/github-pages.yml`）は`master`へのpushをトリガーに、dev-standards共通の`deploy-github-pages`複合action（`npm run build`→GitHub Pagesデプロイ）を呼び出すのみで、lintやテストによる品質ゲートは存在しない
+- PR用CI（`.github/workflows/ci.yml`）はdev-standards共通の`reusable-ci.yml`を`packages: '[]'`で呼び出し、frontend-test/backend-test/package-testは全て無効化した状態でcommitlint検証とCI成功後の自動マージ（`merge`ジョブ）のみを有効にしている。自動マージ後に`master`へのpushイベントを発生させ、上記デプロイCIを起動するには、リポジトリに`BOT_TOKEN`シークレット（書き込み権限を持つPAT）の登録が必要（未設定の場合、マージ自体はされるがデプロイは自動では走らない）
 - パッケージ管理はnpm（`package-lock.json`）に統一している。`yarn.lock`は使わない
 - そのため、変更内容の正確性・整合性はマージ前の目視レビューが唯一の品質担保手段である
 
