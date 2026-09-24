@@ -7,7 +7,9 @@
 本リポジトリは、カーシェア（Anyca代替サービス）の利用者向け案内をまとめたVuePress製の静的サイトである。ソースは`docs/`配下のMarkdownと、`docs/.vuepress/`配下の設定・コンポーネント（Vue）のみで構成される、テストやAPIを持たない小規模なコンテンツサイトである。
 
 - デプロイ用CI（`.github/workflows/github-pages.yml`）は`master`へのpushをトリガーに動く。dev-standards共通の`deploy-github-pages`複合action（`npm run build`→GitHub Pagesデプロイ）を呼び出すのみで、lintやテストによる品質ゲートは存在しない
-- PR用CI（`.github/workflows/ci.yml`）はdev-standards共通の`reusable-ci.yml`を`packages: '[]'`で呼び出す。frontend-test/backend-test/package-testは全て無効化した状態で、commitlint検証・text-lint・doc-duplication-check・CI成功後の自動マージ（`merge`ジョブ）を有効にしている
+- PR用CI（`.github/workflows/ci.yml`）はdev-standards共通の`reusable-ci.yml`を`packages: '[]'`で呼び出す。frontend-test/backend-test/package-testは全て無効化している
+- 代わりにcommitlint検証・text-lint・doc-duplication-check・duplication-check・dead-link-check・CI成功後の自動マージ（`merge`ジョブ）を有効にしている
+- `dead-link-check`（Markdown間の相対リンク切れ検知）の対象パスから`docs/index.md`のみ除外している。VuePress特有のルーティング（`.html`拡張子・ルート絶対パスの画像参照）を使っており、ファイルシステムベースの検証ツールでは実在ファイルとして解決できず誤検知するため
 - 自動マージ後に`master`へのpushイベントを発生させ、上記デプロイCIを起動するには、リポジトリに`BOT_TOKEN`シークレット（書き込み権限を持つPAT）の登録が必要である。未設定の場合、マージ自体はされるがデプロイは自動では走らない
 - パッケージ管理はnpm（`package-lock.json`）に統一している。`yarn.lock`は使わない
 - そのため、変更内容の正確性・整合性はマージ前の目視レビューが唯一の品質担保手段である
