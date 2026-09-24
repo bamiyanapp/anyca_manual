@@ -6,8 +6,9 @@
 
 本リポジトリは、カーシェア（Anyca代替サービス）の利用者向け案内をまとめたVuePress製の静的サイトである。ソースは`docs/`配下のMarkdownと、`docs/.vuepress/`配下の設定・コンポーネント（Vue）のみで構成される、テストやAPIを持たない小規模なコンテンツサイトである。
 
-- デプロイ用CI（`.github/workflows/github-pages.yml`）は`master`へのpushをトリガーに、dev-standards共通の`deploy-github-pages`複合action（`npm run build`→GitHub Pagesデプロイ）を呼び出すのみで、lintやテストによる品質ゲートは存在しない
-- PR用CI（`.github/workflows/ci.yml`）はdev-standards共通の`reusable-ci.yml`を`packages: '[]'`で呼び出し、frontend-test/backend-test/package-testは全て無効化した状態でcommitlint検証とCI成功後の自動マージ（`merge`ジョブ）のみを有効にしている。自動マージ後に`master`へのpushイベントを発生させ、上記デプロイCIを起動するには、リポジトリに`BOT_TOKEN`シークレット（書き込み権限を持つPAT）の登録が必要（未設定の場合、マージ自体はされるがデプロイは自動では走らない）
+- デプロイ用CI（`.github/workflows/github-pages.yml`）は`master`へのpushをトリガーに動く。dev-standards共通の`deploy-github-pages`複合action（`npm run build`→GitHub Pagesデプロイ）を呼び出すのみで、lintやテストによる品質ゲートは存在しない
+- PR用CI（`.github/workflows/ci.yml`）はdev-standards共通の`reusable-ci.yml`を`packages: '[]'`で呼び出す。frontend-test/backend-test/package-testは全て無効化した状態で、commitlint検証・text-lint・doc-duplication-check・CI成功後の自動マージ（`merge`ジョブ）を有効にしている
+- 自動マージ後に`master`へのpushイベントを発生させ、上記デプロイCIを起動するには、リポジトリに`BOT_TOKEN`シークレット（書き込み権限を持つPAT）の登録が必要である。未設定の場合、マージ自体はされるがデプロイは自動では走らない
 - パッケージ管理はnpm（`package-lock.json`）に統一している。`yarn.lock`は使わない
 - そのため、変更内容の正確性・整合性はマージ前の目視レビューが唯一の品質担保手段である
 
@@ -27,7 +28,7 @@ dev-standards CLAUDE.mdの「出力言語」節に従い、チャット上の応
 ## `docs/.vuepress/components/*.vue`変更時
 
 - コンポーネントのprops名・型を変更する場合、呼び出し側（`docs/*.md`内の`<RentalCalculator ...>`等）の全箇所を洗い出して合わせて更新する
-- 計算ロジック（走行距離加算等）を変更した場合、対応するMarkdown側の料金表記（テキストでの説明）とロジックの結果が一致することを確認する
+- 計算ロジック（距離超過分の加算等）を変更した場合、対応するMarkdown側の料金表記（テキストでの説明）とロジックの結果が一致することを確認する
 
 ## 変更前後で必ず行う検証
 
