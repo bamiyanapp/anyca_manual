@@ -21,6 +21,20 @@ jobs:
       # commitlint・mergeジョブのみが有効になる（reusable-ci.yml側の
       # `inputs.packages == ''`/`fromJSON(inputs.packages)[0] == null`判定を利用）
       packages: '[]'
+      # コード（javascript）の丸ごと重複検知。対象はdocs/.vuepress配下のconfig.js等
+      # 数ファイルのみだが、ローカルでの実行確認（0件）を踏まえ有効化する
+      enable_duplication_check: true
+      duplication_threshold: 1
+      # Markdownドキュメント（docs/*.md・CLAUDE.md）の丸ごとコピペ重複検知
+      enable_doc_duplication_check: true
+      doc_duplication_threshold: 1
+      doc_duplication_paths: "docs\nCLAUDE.md"
+      # Markdownドキュメントの日本語文章品質チェック。共有設定
+      # （textlint.config.cjs・textlint-rules/）はdev-standardsからsymlink配布
+      # される想定だが、本リポジトリはsubmoduleを持たないため実体ファイルとして
+      # コピーしている
+      enable_text_lint: true
+      text_lint_paths: "docs/*.md\nCLAUDE.md"
     secrets:
       # mergeジョブのsquash mergeをBOT_TOKENで行わないと、GITHUB_TOKENによる
       # マージはGitHub Actions上で新たなワークフロー実行のトリガーにならず、
