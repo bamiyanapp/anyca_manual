@@ -6,7 +6,8 @@
 
 本リポジトリは、カーシェア（Anyca代替サービス）の利用者向け案内をまとめたVuePress製の静的サイトである。ソースは`docs/`配下のMarkdownと、`docs/.vuepress/`配下の設定・コンポーネント（Vue）のみで構成される、テストやAPIを持たない小規模なコンテンツサイトである。
 
-- CI（`.github/workflows/github-pages.yml`）は`master`へのpushをトリガーに`yarn build`してGitHub Pagesへデプロイするのみで、lintやテストによる品質ゲートは存在しない
+- CI（`.github/workflows/github-pages.yml`）は`master`へのpushをトリガーに、dev-standards共通の`deploy-github-pages`複合action（`npm run build`→GitHub Pagesデプロイ）を呼び出すのみで、lintやテストによる品質ゲートは存在しない
+- パッケージ管理はnpm（`package-lock.json`）に統一している。`yarn.lock`は使わない
 - そのため、変更内容の正確性・整合性はマージ前の目視レビューが唯一の品質担保手段である
 
 # 出力言語
@@ -29,8 +30,8 @@ dev-standards CLAUDE.mdの「出力言語」節に従い、チャット上の応
 
 ## 変更前後で必ず行う検証
 
-- ローカルまたはCIログで`yarn build`が成功することを確認する。本リポジトリにはlint/testが無く、ビルド成功が唯一の自動検証であるため、これを省略しない
-- 可能であれば`yarn start`でローカルプレビューし、変更したページが意図通り表示されることを目視確認する
+- ローカルまたはCIログで`npm run build`が成功することを確認する。本リポジトリにはlint/testが無く、ビルド成功が唯一の自動検証であるため、これを省略しない
+- 可能であれば`npm start`でローカルプレビューし、変更したページが意図通り表示されることを目視確認する
 
 # Issue駆動・Git運用
 
