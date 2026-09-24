@@ -3,32 +3,23 @@ on:
   push:
     branches:
       - master
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page-url }}
     steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      - name: Use Node.js 18
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
-      - name: install
-        run: |
-          yarn install
-      - name: Install Vercel CLI
-        run: npm install -g vercel
-      - name: Update browserslist database
-        run: npx browserslist@latest --update-db
-      - name: build
-        run: |
-          export NODE_OPTIONS=--openssl-legacy-provider
-          yarn build
+      - uses: actions/checkout@v7
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+        id: deploy
+        uses: bamiyanapp/dev-standards/.github/actions/deploy-github-pages@v2.26.2
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: gh-pages  # 公開ブランチを指定
-          publish_dir: ./public  # ビルド後の出力先
-          clean: true
+          working-directory: .
+          node-version: "22"
+          build-command: "NODE_OPTIONS=--openssl-legacy-provider npm run build"
+          artifact-path: ./public

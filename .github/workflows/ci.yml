@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  ci:
+    uses: bamiyanapp/dev-standards/.github/workflows/reusable-ci.yml@v2.26.2
+    with:
+      # 本リポジトリはfrontend_dir/backend_dir構成のNode.jsアプリではなく、
+      # lint/testスクリプトも存在しないVuePress製の静的コンテンツサイトのため、
+      # frontend-test/backend-test/package-testは全て対象外にする。
+      # packagesへ空配列文字列を渡すと、これらのジョブは実行されず
+      # commitlint・mergeジョブのみが有効になる（reusable-ci.yml側の
+      # `inputs.packages == ''`/`fromJSON(inputs.packages)[0] == null`判定を利用）
+      packages: '[]'
+    secrets:
+      # mergeジョブのsquash mergeをBOT_TOKENで行わないと、GITHUB_TOKENによる
+      # マージはGitHub Actions上で新たなワークフロー実行のトリガーにならず、
+      # masterへのpushイベントが発生せずgithub-pages.yml（デプロイ）が起動しない。
+      # リポジトリのSettings > Secrets and variables > ActionsでBOT_TOKEN
+      # （リポジトリへの書き込み権限を持つPAT）を登録すること（未設定の場合、
+      # マージ自体は行われるがデプロイが自動では走らない）
+      BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
